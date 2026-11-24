@@ -283,19 +283,37 @@
                     <p class="eyebrow">SELECTED WORK</p>
                     <h2>My Portfolio Projects</h2>
                     <p>
-                        Practical projects demonstrating my
-                        experience and technical capabilities.
+                        Practical projects and synthetic sample workflows
+                        demonstrating my data operations and automation capabilities.
                     </p>
                 </div>
 
                 <div class="portfolio-grid">
 
+                    <!-- Project 1: Solomon Data Assistant -->
                     <article class="project-card">
-                        <div class="project-visual">
-                            <div class="project-visual-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        <div class="project-preview-dark">
+                            <div class="mini-ui-header">
+                                <span class="mini-ui-dot"></span>
+                                <span class="mini-ui-title">Solomon Data Assistant • Telegram Mini App</span>
                             </div>
-                            <p>DATA OPERATIONS</p>
+                            <div class="mini-ui-kpis">
+                                <div class="mini-kpi">
+                                    <small>RECORDS SYNCED</small>
+                                    <strong>5,400</strong>
+                                    <span>Kobo &amp; Google Sheets</span>
+                                </div>
+                                <div class="mini-kpi">
+                                    <small>WORKFLOW MODES</small>
+                                    <strong>8 Engines</strong>
+                                    <span>.xlsx &amp; .docx Exports</span>
+                                </div>
+                            </div>
+                            <div class="mini-ui-bar">
+                                <span>✓ KoboToolbox API</span>
+                                <span>✓ PivotTables &amp; QA</span>
+                                <span>✓ Drive Sync</span>
+                            </div>
                         </div>
 
                         <div class="project-info">
@@ -306,47 +324,87 @@
                             <h3>Solomon Data Assistant</h3>
 
                             <p>
-                                A Telegram-based data operations and
-                                automation application supporting
-                                dataset cleaning, survey reconciliation,
-                                research synthesis and report exports.
+                                A Telegram Mini App and bot workspace built for personal
+                                data operations—automating dataset cleaning, KoboToolbox
+                                survey reconciliation, web research synthesis, and formatted
+                                Excel (.xlsx) and Word (.docx) report exports.
                             </p>
 
                             <div class="project-tags">
-                                <span>Data Processing</span>
-                                <span>Telegram</span>
+                                <span>Telegram Mini App</span>
+                                <span>KoboToolbox API</span>
+                                <span>Excel &amp; Word Export</span>
                                 <span>AI Automation</span>
                             </div>
+
+                            <button type="button" class="btn-case-study" data-modal="modal-sda">
+                                Inspect App Modules &amp; Sample Workflow →
+                            </button>
                         </div>
                     </article>
 
+                    <!-- Project 2: Data Analysis & Reporting (Synthetic Sample) -->
                     <article class="project-card">
-                        <div class="project-visual project-visual-alt">
-                            <div class="project-visual-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <div class="project-preview-light">
+                            <div class="mini-sheet-header">
+                                <span>SYNTHETIC SAMPLE • Q4_Survey_Reconciliation.xlsx</span>
+                                <span class="badge-verified">100% Validated</span>
                             </div>
-                            <p>DATA ANALYSIS</p>
+                            <table class="mini-sheet-table">
+                                <thead>
+                                    <tr>
+                                        <th>Site ID</th>
+                                        <th>Raw Rows</th>
+                                        <th>QA Flags</th>
+                                        <th>Clean Output</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ZONE-A01</td>
+                                        <td>640</td>
+                                        <td>14 Dupes</td>
+                                        <td>626 Valid</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ZONE-B02</td>
+                                        <td>590</td>
+                                        <td>9 Missing GPS</td>
+                                        <td>581 Verified</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ZONE-C03</td>
+                                        <td>612</td>
+                                        <td>6 ID Mismatch</td>
+                                        <td>606 Reconciled</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                         <div class="project-info">
                             <span class="project-category">
-                                Portfolio Development
+                                Portfolio Development • Synthetic Sample Data
                             </span>
 
-                            <h3>Data Analysis &amp; Reporting</h3>
+                            <h3>Data Analysis &amp; Survey Reconciliation</h3>
 
                             <p>
-                                Demonstration projects showcasing
-                                structured data, quality checks,
-                                analysis and professional reporting
-                                using sample datasets.
+                                End-to-end demonstration using anonymized synthetic field
+                                datasets—showcasing duplicate removal, GPS timestamp checks,
+                                vendor ledger standardization, and executive KPI reporting.
                             </p>
 
                             <div class="project-tags">
-                                <span>Data Quality</span>
-                                <span>Analysis</span>
-                                <span>Reporting</span>
+                                <span>Data Cleaning</span>
+                                <span>Survey QA</span>
+                                <span>PivotTables</span>
+                                <span>Synthetic Demo</span>
                             </div>
+
+                            <button type="button" class="btn-case-study" data-modal="modal-sample">
+                                View Before &amp; After Synthetic Dataset →
+                            </button>
                         </div>
                     </article>
 
@@ -398,6 +456,123 @@
 
         </div>
     </footer>
+
+    <!-- Modal 1: Solomon Data Assistant -->
+    <div id="modal-sda" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-labelledby="modal-sda-title">
+            <div class="modal-header">
+                <div>
+                    <span class="project-category">Personal Project • Synthetic Demo Metrics</span>
+                    <h3 id="modal-sda-title">Solomon Data Assistant — Architecture &amp; Modules</h3>
+                </div>
+                <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Solomon Data Assistant</strong> is a personal Telegram Mini App and bot
+                    designed to streamline repetitive data operations, field survey checks, and
+                    executive reporting into a mobile-first workspace.
+                </p>
+
+                <div class="modal-grid">
+                    <div class="modal-box">
+                        <h4>1. Live Operational Dashboard</h4>
+                        <p>Tracks synced records across KoboToolbox Field API, Google Sheets Ledgers, and Google Forms Intake with 7-day throughput velocity metrics.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>2. Multi-Mode Task Execution</h4>
+                        <p>Supports Data Cleaning &amp; PivotTables, Survey Data Sync (Kobo/ODK), Online Research Synthesis, Admin Word Reports, SQL Queries, and SPSS Codebooks.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>3. Direct Data Connectors</h4>
+                        <p>Connects to KoboToolbox v2 endpoints and Google Sheets URLs to ingest raw rows, validate schemas, and sync clean outputs back to Google Drive.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>4. Automated File Deliverables</h4>
+                        <p>Generates formatted <strong>.xlsx workbooks</strong> (with SUMIFS, XLOOKUP, and Pivot layouts) and <strong>.docx executive memos</strong> ready for download.</p>
+                    </div>
+                </div>
+
+                <!-- Optional real screenshot slots (auto-display once placed in assets/) -->
+                <div class="modal-screenshots" id="sda-screenshots-wrap" style="display:none;">
+                    <h4>Application Interface Previews</h4>
+                    <div class="screenshot-row">
+                        <img src="assets/sda-dashboard.jpg" alt="Solomon Data Assistant Live Dashboard" onerror="this.style.display='none'">
+                        <img src="assets/sda-tasks.jpg" alt="Solomon Data Assistant Task History" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                <p class="modal-note">
+                    Note: Built and maintained as a personal productivity tool. All displayed figures and task runs use synthetic demonstration datasets.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Synthetic Data Cleaning & Reconciliation -->
+    <div id="modal-sample" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-labelledby="modal-sample-title">
+            <div class="modal-header">
+                <div>
+                    <span class="project-category">Portfolio Demonstration • 100% Synthetic Data</span>
+                    <h3 id="modal-sample-title">Field Survey &amp; Ledger Reconciliation Workflow</h3>
+                </div>
+                <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    This sample workflow demonstrates how raw field survey exports (<strong>1,842 synthetic rows</strong>)
+                    and monthly vendor ledgers (<strong>1,248 synthetic rows</strong>) are audited, standardized, and
+                    converted into decision-ready summaries.
+                </p>
+
+                <h4 class="modal-subhead">Before vs. After Quality Control (Synthetic Sample)</h4>
+                <div class="table-wrap">
+                    <table class="sample-compare-table">
+                        <thead>
+                            <tr>
+                                <th>Record ID</th>
+                                <th>Raw Field Entry (Before)</th>
+                                <th>Issue Detected</th>
+                                <th>Standardized Output (After)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HH-1042</td>
+                                <td><code>zone a / enum_04 / 2026-11-22 10:05</code></td>
+                                <td>Duplicate GPS timestamp within 2 mins</td>
+                                <td><code>ZONE-A01 | ENUM-04 | Flagged &amp; Verified</code></td>
+                            </tr>
+                            <tr>
+                                <td>VND-089</td>
+                                <td><code>"ethio telecom ltd." | ETB 14,500</code></td>
+                                <td>Inconsistent vendor naming across 12 rows</td>
+                                <td><code>Ethio Telecom | Cost Center: OPS-02</code></td>
+                            </tr>
+                            <tr>
+                                <td>HH-1109</td>
+                                <td><code>zone-b02 | household_size: 99</code></td>
+                                <td>Out-of-range outlier value</td>
+                                <td><code>ZONE-B02 | Verified via Enumerator Callback</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-grid">
+                    <div class="modal-box">
+                        <h4>Key QA Checks Applied</h4>
+                        <p>Duplicate ID detection, enumerator timestamp intervals, missing GPS coordinate flags, and standardized lookup codes.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>Deliverables Produced</h4>
+                        <p>Clean master dataset (.xlsx), exception audit log for field supervisors, and a 2-page executive summary brief (.docx).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 
