@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Professional portfolio of Solomon Hailu, a Data Operations and Automation Specialist with over 8 years of experience in data management, research, analysis and automation.">
+    <meta name="description" content="Professional portfolio of Solomon Hailu, a Data Operations and Automation Specialist with over 8 years of experience in data management, research, analysis, and AI automation.">
 
-        <title>Solomon Hailu | Data Operations &amp; Automation Specialist</title>
+    <title>Solomon Hailu | Data Operations &amp; Automation Specialist</title>
     <link rel="canonical" href="https://hailu.online/">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Open Graph / Social Sharing Metadata -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hailu.online/">
-    <meta property="og:title" content="Solomon Hailu | Data Operations & Automation Specialist">
-    <meta property="og:description" content="8+ years of experience in data management, field survey operations, research, data analysis, and AI workflow automation.">
+    <meta property="og:title" content="Solomon Hailu | Data Operations &amp; Automation Specialist">
+    <meta property="og:description" content="8+ years of experience in data management, field survey operations, research, data analysis, web development, and AI workflow automation.">
 
     <link rel="stylesheet" href="style.css">
     <script type="application/ld+json">
@@ -36,15 +36,20 @@
 
     <!-- Navigation -->
     <header class="header">
-        <nav class="navbar container">
-            <a href="#home" class="logo">Solomon Hailu<span>.</span></a>
+        <nav class="navbar container" aria-label="Primary Navigation">
+            <a href="index.html" class="logo">Solomon Hailu<span>.</span></a>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact" class="nav-contact">Contact Me</a></li>
+            <button type="button" id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+                &#9776;
+            </button>
+
+            <ul id="nav-links" class="nav-links">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="contact.html" class="nav-contact">Request a Quote</a></li>
             </ul>
         </nav>
     </header>
@@ -56,7 +61,7 @@
             <div class="container hero-content">
 
                 <div class="hero-text">
-                    <p class="eyebrow">DATA • RESEARCH • TECHNOLOGY</p>
+                    <p class="eyebrow">DATA &bull; RESEARCH &bull; TECHNOLOGY</p>
 
                     <h1>
                         Turning Data Into
@@ -66,18 +71,21 @@
                     <h2>Data Operations &amp; Automation Specialist</h2>
 
                     <p class="hero-description">
-                        I help organizations manage data, conduct research,
-                        improve operations and build practical digital
-                        solutions through technology and automation.
+                        Virtual Assistance | Data Management | Research | Data Analysis | AI Automation.
+                        I help organizations manage data, conduct research, improve operations, and build practical digital solutions.
                     </p>
 
                     <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary">
-                            Explore My Work
+                        <a href="contact.html" class="btn btn-primary">
+                            Request a Quote
                         </a>
 
-                        <a href="#contact" class="btn btn-outline">
-                            Contact Me
+                        <a href="pricing.html" class="btn btn-outline">
+                            View Pricing Packages
+                        </a>
+
+                        <a href="portfolio.html" class="btn btn-outline">
+                            Explore Portfolio
                         </a>
                     </div>
 
@@ -134,7 +142,7 @@
                     </div>
 
                     <div>
-                                                <p>
+                        <p>
                             I am a Data Operations and Automation Specialist
                             with over eight years of experience in data management,
                             data analysis and reporting, field data operations,
@@ -144,7 +152,7 @@
                         <p>
                             My professional background includes working remotely
                             and in person with NGOs, INGOs, and United Nations
-                            organizations—delivering clean datasets, survey
+                            organizations&mdash;delivering clean datasets, survey
                             reconciliation, administrative support, and accurate reporting.
                         </p>
 
@@ -156,9 +164,14 @@
                             transcription and subtitles.
                         </p>
 
-                        <a href="#contact" data-modal="modal-contact" data-subject="CV Request - Solomon Hailu" class="btn btn-outline" style="margin-top: 8px; font-size: 13px; padding: 10px 18px;">
-                            Request Full CV (PDF)
-                        </a>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+                            <a href="contact.html" data-modal="modal-contact" data-subject="CV Request - Solomon Hailu" class="btn btn-outline btn-sm">
+                                Request Full CV (PDF)
+                            </a>
+                            <a href="assets/Solomon_Hailu_Service_Pricing_Catalog.pdf" download="Solomon_Hailu_Service_Pricing_Catalog.pdf" class="btn btn-outline btn-sm">
+                                Download Complete Pricing Catalog (PDF)
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -299,11 +312,49 @@
                     </article>
 
                 </div>
+
+                <div style="text-align: center; margin-top: 38px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                    <a href="services.html" class="btn btn-primary">Explore All 9 Services in Detail</a>
+                    <a href="contact.html" class="btn btn-outline">Request a Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transparent Pricing & PDF Catalog Introduction -->
+        <section id="pricing-overview" class="section">
+            <div class="container">
+                <div class="pricing-teaser-box">
+                    <div>
+                        <p class="eyebrow">SERVICE PACKAGES &amp; RATES</p>
+                        <h3>Transparent Packages in USD &amp; Indicative ETB</h3>
+                        <p>
+                            Every service is structured into clear <strong>Starter</strong>, <strong>Standard</strong>, and <strong>Extended</strong> packages with defined record limits, deliverables, turnaround times, and revision allowances. Custom quotations are available for larger or ongoing engagements.
+                        </p>
+                        <div class="pricing-teaser-highlights">
+                            <span>9 Complete Services</span>
+                            <span>27 Structured Tiers</span>
+                            <span>USD Base + Indicative ETB</span>
+                            <span>Custom Quotes Available</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-teaser-actions">
+                        <a href="pricing.html" class="btn btn-primary">
+                            View All Pricing Packages
+                        </a>
+                        <a href="assets/Solomon_Hailu_Service_Pricing_Catalog.pdf" download="Solomon_Hailu_Service_Pricing_Catalog.pdf" class="btn btn-outline">
+                            Download Complete Pricing Catalog (PDF)
+                        </a>
+                        <a href="contact.html" class="btn btn-outline">
+                            Request a Custom Quote
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="section">
+        <section id="portfolio" class="section section-light">
             <div class="container">
 
                 <div class="section-heading">
@@ -317,65 +368,171 @@
 
                 <div class="portfolio-grid">
 
-                    <!-- Project 1: Solomon Data Assistant -->
+                    <!-- Project 1: Bilingual E-Commerce & Delivery Telegram Mini App -->
+                    <article class="project-card">
+                        <div class="project-preview-light">
+                            <div class="mini-sheet-header">
+                                <span>TELEGRAM MINI APP &bull; Bilingual Retail &amp; Delivery</span>
+                                <span class="badge-verified">EN / &#4725;&#4877;&#4653;&#4763;</span>
+                            </div>
+                            <table class="mini-sheet-table">
+                                <thead>
+                                    <tr>
+                                        <th>Module</th>
+                                        <th>Capability</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Storefront</td>
+                                        <td>6 Categories + Live Search + Cart</td>
+                                        <td>Bilingual UI</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Checkout</td>
+                                        <td>Buyer Info + Google Maps Pin</td>
+                                        <td>Delivery Ready</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Admin &amp; Bot</td>
+                                        <td>Password + 2FA + Payment Alerts</td>
+                                        <td>Verified Flow</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="project-info">
+                            <span class="project-category">
+                                AI Automation &amp; Chatbot Development &bull; Anonymized Client Build
+                            </span>
+
+                            <h3>Bilingual Shop &amp; Delivery Telegram Mini App</h3>
+
+                            <p>
+                                A full-featured Telegram Mini App and notification bot built for a retail delivery shop&mdash;featuring an English/Tigrinya storefront across 6 product categories with instant search, cart checkout with buyer contact details and Google Maps delivery pinning, a password + 2FA-protected admin dashboard, and automated payment approval/rejection alerts.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>Telegram Mini App</span>
+                                <span>Bilingual (EN / Tigrinya)</span>
+                                <span>Google Maps Checkout</span>
+                                <span>2FA Admin &amp; Bot Alerts</span>
+                            </div>
+
+                            <button type="button" class="btn-case-study" data-modal="modal-shop-app">
+                                Inspect Storefront, Checkout &amp; Admin Flow &rarr;
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: 5-Page Android App Distribution & Verification Website -->
                     <article class="project-card">
                         <div class="project-preview-dark">
                             <div class="mini-ui-header">
                                 <span class="mini-ui-dot"></span>
-                                <span class="mini-ui-title">Solomon Data Assistant • Telegram Mini App</span>
+                                <span class="mini-ui-title">Official App Distribution Portal &bull; 5-Page Website</span>
                             </div>
                             <div class="mini-ui-kpis">
                                 <div class="mini-kpi">
-                                    <small>RECORDS SYNCED</small>
-                                    <strong>5,400</strong>
-                                    <span>Kobo &amp; Google Sheets</span>
+                                    <small>SITE STRUCTURE</small>
+                                    <strong>5 Pages</strong>
+                                    <span>Home &bull; Download &bull; Install &bull; Verify &bull; Help</span>
                                 </div>
                                 <div class="mini-kpi">
-                                    <small>WORKFLOW MODES</small>
-                                    <strong>8 Engines</strong>
-                                    <span>.xlsx &amp; .docx Exports</span>
+                                    <small>SECURITY &amp; TRUST</small>
+                                    <strong>APK Verify</strong>
+                                    <span>Version, Build &amp; Hash Check</span>
                                 </div>
                             </div>
                             <div class="mini-ui-bar">
-                                <span>✓ KoboToolbox API</span>
-                                <span>✓ PivotTables &amp; QA</span>
-                                <span>✓ Drive Sync</span>
+                                <span>&#10003; Release Status Card</span>
+                                <span>&#10003; Guided Android Setup</span>
+                                <span>&#10003; Safe Source Verification</span>
                             </div>
                         </div>
 
                         <div class="project-info">
                             <span class="project-category">
-                                Personal Project
+                                Website Development &amp; Maintenance &bull; Anonymized Client Build
+                            </span>
+
+                            <h3>Five-Page Android App Distribution &amp; Verification Website</h3>
+
+                            <p>
+                                A clean, trust-focused 5-page web portal (<em>Home, Download, Installation, Verify, and Help</em>) developed for an entertainment venue to distribute its official Android application safely&mdash;complete with version/build tracking, step-by-step installation guidance, APK fingerprint verification, and anti-spoofing safety instructions.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>5-Page Responsive Web</span>
+                                <span>App Release Portal</span>
+                                <span>APK Checksum Verification</span>
+                                <span>User Onboarding UX</span>
+                            </div>
+
+                            <button type="button" class="btn-case-study" data-modal="modal-app-portal">
+                                Inspect 5-Page Portal Architecture &rarr;
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Solomon Data Assistant -->
+                    <article class="project-card">
+                        <div class="project-preview-dark">
+                            <div class="mini-ui-header">
+                                <span class="mini-ui-dot"></span>
+                                <span class="mini-ui-title">Solomon Data Assistant &bull; Telegram Mini App</span>
+                            </div>
+                            <div class="mini-ui-kpis">
+                                <div class="mini-kpi">
+                                    <small>ENVIRONMENT</small>
+                                    <strong>Personal App</strong>
+                                    <span>Telegram Bot &amp; Mini App</span>
+                                </div>
+                                <div class="mini-kpi">
+                                    <small>OUTPUT FORMATS</small>
+                                    <strong>XLSX &amp; DOCX</strong>
+                                    <span>Structured File Exports</span>
+                                </div>
+                            </div>
+                            <div class="mini-ui-bar">
+                                <span>&#10003; Dataset Cleaning</span>
+                                <span>&#10003; Survey Reconciliation</span>
+                                <span>&#10003; Web Research Synthesis</span>
+                            </div>
+                        </div>
+
+                        <div class="project-info">
+                            <span class="project-category">
+                                Data Operations &amp; AI Automation &bull; Personal Demonstration
                             </span>
 
                             <h3>Solomon Data Assistant</h3>
 
                             <p>
-                                A Telegram Mini App and bot workspace built for personal
-                                data operations—automating dataset cleaning, KoboToolbox
-                                survey reconciliation, web research synthesis, and formatted
-                                Excel (.xlsx) and Word (.docx) report exports.
+                                A Telegram Mini App and Bot built for personal use and workflow demonstration&mdash;combining dataset cleaning, field survey reconciliation, web research synthesis, AI-assisted analysis, and formatted Excel (.xlsx) and Word (.docx) exports.
                             </p>
 
                             <div class="project-tags">
                                 <span>Telegram Mini App</span>
-                                <span>KoboToolbox API</span>
+                                <span>Survey Reconciliation</span>
                                 <span>Excel &amp; Word Export</span>
-                                <span>AI Automation</span>
+                                <span>AI Workflow Automation</span>
                             </div>
 
                             <button type="button" class="btn-case-study" data-modal="modal-sda">
-                                Inspect App Modules &amp; Sample Workflow →
+                                Inspect App Modules &amp; Sample Workflow &rarr;
                             </button>
                         </div>
                     </article>
 
-                    <!-- Project 2: Data Analysis & Reporting (Synthetic Sample) -->
+                    <!-- Project 4: Data Analysis & Survey Reconciliation -->
                     <article class="project-card">
                         <div class="project-preview-light">
                             <div class="mini-sheet-header">
-                                <span>SYNTHETIC SAMPLE • Q4_Survey_Reconciliation.xlsx</span>
-                                <span class="badge-verified">100% Validated</span>
+                                <span>SYNTHETIC SAMPLE &bull; Survey_Reconciliation_QA.xlsx</span>
+                                <span class="badge-verified">100% Synthetic Data</span>
                             </div>
                             <table class="mini-sheet-table">
                                 <thead>
@@ -411,30 +568,34 @@
 
                         <div class="project-info">
                             <span class="project-category">
-                                Portfolio Development • Synthetic Sample Data
+                                Data Analysis &amp; Field Operations &bull; Synthetic Sample Data
                             </span>
 
                             <h3>Data Analysis &amp; Survey Reconciliation</h3>
 
                             <p>
-                                End-to-end demonstration using anonymized synthetic field
-                                datasets—showcasing duplicate removal, GPS timestamp checks,
-                                vendor ledger standardization, and executive KPI reporting.
+                                End-to-end demonstration using anonymized synthetic field datasets&mdash;showcasing missing-value checks, duplicate identification, logical consistency rules, before/after cleaning records, and structured reporting deliverables.
                             </p>
 
                             <div class="project-tags">
                                 <span>Data Cleaning</span>
-                                <span>Survey QA</span>
-                                <span>PivotTables</span>
+                                <span>Missing &amp; Duplicate Checks</span>
+                                <span>Consistency QA</span>
                                 <span>Synthetic Demo</span>
                             </div>
 
                             <button type="button" class="btn-case-study" data-modal="modal-sample">
-                                View Before &amp; After Synthetic Dataset →
+                                View Before &amp; After Synthetic Dataset &rarr;
                             </button>
                         </div>
                     </article>
 
+                </div>
+            </div>
+        </section>
+
+                <div style="text-align: center; margin-top: 38px;">
+                    <a href="portfolio.html" class="btn btn-outline">View Full Portfolio &amp; QA Demonstrations</a>
                 </div>
             </div>
         </section>
@@ -452,9 +613,14 @@
                     and technical skills can support your organization.
                 </p>
 
-                <a href="#contact" data-modal="modal-contact" data-subject="Project Inquiry - Solomon Hailu" class="btn btn-primary">
-                    Email Me
-                </a>
+                <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary">
+                        Request a Quote
+                    </a>
+                    <a href="#contact" data-modal="modal-contact" data-subject="Project Inquiry - Solomon Hailu" class="btn btn-outline">
+                        Quick Email Options
+                    </a>
+                </div>
 
                 <p class="contact-email">
                     Solomon@hailu.online
@@ -467,70 +633,180 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Solomon Hailu<span>.</span></a>
+                    <p>
+                        Data Operations &amp; Automation Specialist &mdash; Virtual Assistance, Data Management, Research, Data Analysis &amp; AI Automation.
+                    </p>
+                </div>
 
-            <a href="#home" class="logo">Solomon Hailu<span>.</span></a>
-
-            <p>
-                © <span id="year"></span>
-                Solomon Hailu. All rights reserved.
-            </p>
-
-                        <div style="display: flex; gap: 20px; align-items: center;">
-                <a href="https://github.com/solomonhailu123" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="#contact" data-modal="modal-contact" data-subject="Project Inquiry - Solomon Hailu">Get in Touch</a>
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="contact.html">Contact Me</a>
+                    <a href="https://github.com/solomonhailu123" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </nav>
             </div>
 
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Solomon Hailu. All rights reserved.</p>
+                <p>Email: <a href="mailto:Solomon@hailu.online">Solomon@hailu.online</a> &bull; Web: <a href="https://hailu.online/">hailu.online</a></p>
+            </div>
         </div>
     </footer>
+
+    <!-- Modal A: Bilingual Shop & Delivery Telegram Mini App -->
+    <div id="modal-shop-app" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-labelledby="modal-shop-title">
+            <div class="modal-header">
+                <div>
+                    <span class="project-category">Anonymized Client Solution &bull; Telegram Mini App &amp; Bot</span>
+                    <h3 id="modal-shop-title">Bilingual Shop &amp; Delivery Telegram Mini App</h3>
+                </div>
+                <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Designed for a local retail delivery shop to streamline product browsing, map-pinned delivery orders, and payment receipt verification directly inside Telegram&mdash;with full <strong>English and Tigrinya</strong> interface switching.
+                </p>
+
+                <div class="modal-grid">
+                    <div class="modal-box">
+                        <h4>1. Bilingual Storefront &amp; 6-Category Catalog</h4>
+                        <p>Interactive product grid with instant search bar, 6 organized product category tabs, unit sizes, ETB pricing, one-tap cart controls, and instant English / Tigrinya language toggle.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>2. Cart Checkout &amp; Google Maps Pinning</h4>
+                        <p>Captures buyer name, contact phone number, delivery notes, Google Maps drop-pin location, and payment reference details in a guided mobile checkout flow.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>3. Password + 2FA Admin Dashboard</h4>
+                        <p>Restricts order management behind password authentication plus time-expiring Telegram one-time 2FA verification codes so only authorized staff can approve or reject orders.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>4. Automated Bilingual Bot Notifications</h4>
+                        <p>Sends instant Telegram confirmation messages when an order is approved, or clear rejection notices with actionable instructions when a payment reference cannot be verified.</p>
+                    </div>
+                </div>
+
+                <h4 class="modal-subhead">System Workflow Summary (Anonymized)</h4>
+                <div class="table-wrap">
+                    <table class="sample-compare-table">
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>User Role</th>
+                                <th>Key Functionality Delivered</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Browse &amp; Search</td>
+                                <td>Customer</td>
+                                <td>Filter across 6 product categories, search items by keyword, switch EN/Tigrinya</td>
+                            </tr>
+                            <tr>
+                                <td>Order &amp; Location</td>
+                                <td>Customer</td>
+                                <td>Add items to cart, enter contact info, pin delivery location on Google Maps</td>
+                            </tr>
+                            <tr>
+                                <td>Verification &amp; Alert</td>
+                                <td>Admin &amp; Bot</td>
+                                <td>Login via Password + 5-min 2FA code; approve/reject payment; trigger instant bot alert</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="modal-note">
+                    Confidentiality Note: Client business name, customer identities, and shop location details are omitted to protect client privacy.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal B: Five-Page Android App Distribution & Verification Website -->
+    <div id="modal-app-portal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-labelledby="modal-portal-title">
+            <div class="modal-header">
+                <div>
+                    <span class="project-category">Anonymized Client Solution &bull; 5-Page Responsive Website</span>
+                    <h3 id="modal-portal-title">Five-Page Android App Distribution &amp; Verification Website</h3>
+                </div>
+                <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Built for an entertainment venue needing a trustworthy, mobile-first web portal where Android users can safely download, install, and verify the authenticity of the official mobile application instead of relying on unverified forwarded files.
+                </p>
+
+                <div class="modal-grid">
+                    <div class="modal-box">
+                        <h4>1. Release Status &amp; Package Card (Home)</h4>
+                        <p>Displays current release status, version number, build number, target platform (Android), and clear download availability indicators.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>2. Dedicated Download &amp; Installation Pages</h4>
+                        <p>Guides non-technical smartphone users step by step through downloading the official package and enabling safe installation permissions.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>3. APK Checksum &amp; Source Verification</h4>
+                        <p>Provides published reference fingerprint details so users can verify file integrity and avoid tampered APKs from third-party chats.</p>
+                    </div>
+                    <div class="modal-box">
+                        <h4>4. Help, Safety &amp; Policy Navigation</h4>
+                        <p>Includes a dedicated Help center plus structured Safety, Privacy, Terms, and Responsible Use documentation across 5 cohesive pages.</p>
+                    </div>
+                </div>
+
+                <p class="modal-note">
+                    Confidentiality Note: Brand name, custom domain, and proprietary application assets are withheld to respect client confidentiality.
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal 1: Solomon Data Assistant -->
     <div id="modal-sda" class="modal-backdrop" aria-hidden="true">
         <div class="modal-dialog" role="dialog" aria-labelledby="modal-sda-title">
             <div class="modal-header">
                 <div>
-                    <span class="project-category">Personal Project • Synthetic Demo Metrics</span>
-                    <h3 id="modal-sda-title">Solomon Data Assistant — Architecture &amp; Modules</h3>
+                    <span class="project-category">Personal Demonstration Project</span>
+                    <h3 id="modal-sda-title">Solomon Data Assistant &mdash; Architecture &amp; Modules</h3>
                 </div>
                 <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 <p>
-                    <strong>Solomon Data Assistant</strong> is a personal Telegram Mini App and bot
-                    designed to streamline repetitive data operations, field survey checks, and
-                    executive reporting into a mobile-first workspace.
+                    <strong>Solomon Data Assistant</strong> is a personal Telegram Mini App and Bot developed for personal use and workflow demonstration&mdash;bringing dataset cleaning, field survey reconciliation, web research synthesis, AI-powered data analysis, and file exports into one mobile-accessible workspace.
                 </p>
 
                 <div class="modal-grid">
                     <div class="modal-box">
-                        <h4>1. Live Operational Dashboard</h4>
-                        <p>Tracks synced records across KoboToolbox Field API, Google Sheets Ledgers, and Google Forms Intake with 7-day throughput velocity metrics.</p>
+                        <h4>1. Dataset Cleaning &amp; Validation</h4>
+                        <p>Standardizes columns, flags duplicate rows, checks missing fields, and organizes tabular exports into clean spreadsheets.</p>
                     </div>
                     <div class="modal-box">
-                        <h4>2. Multi-Mode Task Execution</h4>
-                        <p>Supports Data Cleaning &amp; PivotTables, Survey Data Sync (Kobo/ODK), Online Research Synthesis, Admin Word Reports, SQL Queries, and SPSS Codebooks.</p>
+                        <h4>2. Field Survey Reconciliation</h4>
+                        <p>Cross-checks KoboToolbox/ODK survey submissions against site lists and enumerator logs to isolate inconsistencies early.</p>
                     </div>
                     <div class="modal-box">
-                        <h4>3. Direct Data Connectors</h4>
-                        <p>Connects to KoboToolbox v2 endpoints and Google Sheets URLs to ingest raw rows, validate schemas, and sync clean outputs back to Google Drive.</p>
+                        <h4>3. Web Research &amp; AI Analysis</h4>
+                        <p>Synthesizes multi-source research notes and generates structured analytical summaries using AI-assisted workflows.</p>
                     </div>
                     <div class="modal-box">
-                        <h4>4. Automated File Deliverables</h4>
-                        <p>Generates formatted <strong>.xlsx workbooks</strong> (with SUMIFS, XLOOKUP, and Pivot layouts) and <strong>.docx executive memos</strong> ready for download.</p>
-                    </div>
-                </div>
-
-                <!-- Optional real screenshot slots (auto-display once placed in assets/) -->
-                <div class="modal-screenshots" id="sda-screenshots-wrap" style="display:none;">
-                    <h4>Application Interface Previews</h4>
-                    <div class="screenshot-row">
-                        <img src="assets/sda-dashboard.jpg" alt="Solomon Data Assistant Live Dashboard" onerror="this.style.display='none'">
-                        <img src="assets/sda-tasks.jpg" alt="Solomon Data Assistant Task History" onerror="this.style.display='none'">
+                        <h4>4. Excel &amp; Word Deliverables</h4>
+                        <p>Produces formatted <strong>.xlsx workbooks</strong> and <strong>.docx summary reports</strong> ready for review and sharing.</p>
                     </div>
                 </div>
 
                 <p class="modal-note">
-                    Note: Built and maintained as a personal productivity tool. All displayed figures and task runs use synthetic demonstration datasets.
+                    Note: Developed and maintained as a personal demonstration project, not a commercially deployed client product.
                 </p>
             </div>
         </div>
@@ -541,16 +817,14 @@
         <div class="modal-dialog" role="dialog" aria-labelledby="modal-sample-title">
             <div class="modal-header">
                 <div>
-                    <span class="project-category">Portfolio Demonstration • 100% Synthetic Data</span>
+                    <span class="project-category">Portfolio Demonstration &bull; 100% Synthetic Data</span>
                     <h3 id="modal-sample-title">Field Survey &amp; Ledger Reconciliation Workflow</h3>
                 </div>
                 <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 <p>
-                    This sample workflow demonstrates how raw field survey exports (<strong>1,842 synthetic rows</strong>)
-                    and monthly vendor ledgers (<strong>1,248 synthetic rows</strong>) are audited, standardized, and
-                    converted into decision-ready summaries.
+                    This synthetic sample workflow illustrates how raw survey records (<strong>1,842 synthetic rows</strong>) and vendor ledgers (<strong>1,248 synthetic rows</strong>) undergo missing-value checks, duplicate identification, consistency validation, and structured reporting.
                 </p>
 
                 <h4 class="modal-subhead">Before vs. After Quality Control (Synthetic Sample)</h4>
@@ -580,7 +854,7 @@
                             <tr>
                                 <td>HH-1109</td>
                                 <td><code>zone-b02 | household_size: 99</code></td>
-                                <td>Out-of-range outlier value</td>
+                                <td>Out-of-range consistency check failure</td>
                                 <td><code>ZONE-B02 | Verified via Enumerator Callback</code></td>
                             </tr>
                         </tbody>
@@ -589,19 +863,20 @@
 
                 <div class="modal-grid">
                     <div class="modal-box">
-                        <h4>Key QA Checks Applied</h4>
-                        <p>Duplicate ID detection, enumerator timestamp intervals, missing GPS coordinate flags, and standardized lookup codes.</p>
+                        <h4>QA Checks Applied</h4>
+                        <p>Missing-value scans, duplicate ID detection, enumerator timestamp intervals, and cross-field consistency rules.</p>
                     </div>
                     <div class="modal-box">
-                        <h4>Deliverables Produced</h4>
-                        <p>Clean master dataset (.xlsx), exception audit log for field supervisors, and a 2-page executive summary brief (.docx).</p>
+                        <h4>Sample Deliverables</h4>
+                        <p>Cleaned master dataset (.xlsx), supervisor exception audit log, and a concise 2-page summary report (.docx).</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-        <!-- Modal 3: Direct Contact & CV Request -->
+
+    <!-- Modal 3: Direct Contact & CV Request -->
     <div id="modal-contact" class="modal-backdrop" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 520px;" role="dialog" aria-labelledby="modal-contact-title">
             <div class="modal-header">
@@ -639,10 +914,9 @@
         </div>
     </div>
 
+
     <script src="script.js"></script>
 
 </body>
 </html>
-
-
 
