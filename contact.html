@@ -92,7 +92,7 @@
 
                     <div class="transparency-notice">
                         <strong>How This Inquiry Form Works:</strong><br>
-                        This website is hosted statically on GitHub Pages without a server-side mail processor. Submitting the form validates your details and prepares a complete, pre-addressed email to <strong>Solomon@hailu.online</strong> so you can send it through your email app or Gmail Web.
+                        Submitting this form validates your details and sends your inquiry directly to <strong>Solomon@hailu.online</strong> via Web3Forms, while also providing instant backup buttons (Default Email App, Gmail Web, and Copy Inquiry Text) so your message always gets through.
                     </div>
                 </aside>
 
@@ -104,7 +104,10 @@
                         Fields marked with * are required. If you arrived from a service or pricing card, your selection is prefilled below and can be adjusted anytime.
                     </p>
 
-                    <form id="quote-form" novalidate>
+                                        <form id="quote-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                        <input type="hidden" name="access_key" value="3493159c-4b94-47a5-81fc-bc20492e67c5">
+                        <input type="hidden" name="subject" value="New Quote Inquiry from hailu.online">
+                        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="client-name">Your Name *</label>
@@ -159,7 +162,7 @@
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Prepare Inquiry Email</button>
+                            <button type="submit" class="btn btn-primary">Send Inquiry</button>
                             <a href="pricing.html" class="btn btn-outline">Review Pricing Packages</a>
                         </div>
 
