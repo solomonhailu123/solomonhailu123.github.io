@@ -369,7 +369,11 @@ const openInquirySummaryPopup = (fields) => {
     if (existing) existing.remove();
 
     const isAm = currentLang === "am";
-    const esc = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const esc = (v) => String(v || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
 
     const title = isAm ? "ጥያቄዎ በተሳካ ሁኔታ ተልኳል" : "Inquiry Sent Successfully";
     const subtitle = isAm
@@ -386,12 +390,12 @@ const openInquirySummaryPopup = (fields) => {
         [isAm ? "የፕሮጀክት ዝርዝር" : "Project Description", fields.details]
     ];
 
-    const rowsHtml = rows.map(([k, v]) => 
-        <div style="padding:8px 0; border-bottom:1px solid #e5e7eb; display:grid; grid-template-columns:145px 1fr; gap:8px; font-size:13.5px;">
-            <strong style="color:#1e293b;">:</strong>
-            <span style="color:#334155; white-space:pre-wrap; word-break:break-word;"></span>
-        </div>
-    ).join("");
+    const rowsHtml = rows.map((pair) => (
+        '<div style="padding:8px 0; border-bottom:1px solid #e5e7eb; display:grid; grid-template-columns:145px 1fr; gap:8px; font-size:13.5px;">'
+        + '<strong style="color:#1e293b;">' + esc(pair[0]) + ':</strong>'
+        + '<span style="color:#334155; white-space:pre-wrap; word-break:break-word;">' + esc(pair[1]) + '</span>'
+        + '</div>'
+    )).join("");
 
     const closeBtnText = isAm ? "ዝጋ" : "Close";
 
@@ -401,21 +405,20 @@ const openInquirySummaryPopup = (fields) => {
     overlay.setAttribute("aria-modal", "true");
     overlay.style.cssText = "position:fixed; inset:0; background:rgba(15,23,42,0.62); display:flex; align-items:center; justify-content:center; padding:16px; z-index:9999;";
 
-    overlay.innerHTML = 
-        <div style="background:#ffffff; color:#0f172a; max-width:560px; width:100%; border-radius:12px; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.28); max-height:88vh; overflow-y:auto; position:relative;">
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px;">
-                <h3 style="margin:0; font-size:19px; color:#0f172a;"></h3>
-                <button type="button" id="close-inquiry-popup-x" aria-label="" style="background:transparent; border:none; font-size:22px; line-height:1; cursor:pointer; color:#475569; padding:0 4px;">&times;</button>
-            </div>
-            <p style="margin:0 0 14px; font-size:14px; color:#475569; line-height:1.5;"></p>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:6px 12px; margin-bottom:18px;">
-                
-            </div>
-            <div style="display:flex; justify-content:flex-end;">
-                <button type="button" id="close-inquiry-popup-btn" class="btn btn-primary btn-sm"></button>
-            </div>
-        </div>
-    ;
+    overlay.innerHTML =
+        '<div style="background:#ffffff; color:#0f172a; max-width:560px; width:100%; border-radius:12px; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.28); max-height:88vh; overflow-y:auto; position:relative;">'
+        + '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px;">'
+        + '<h3 style="margin:0; font-size:19px; color:#0f172a;">' + esc(title) + '</h3>'
+        + '<button type="button" id="close-inquiry-popup-x" aria-label="' + esc(closeBtnText) + '" style="background:transparent; border:none; font-size:22px; line-height:1; cursor:pointer; color:#475569; padding:0 4px;">&times;</button>'
+        + '</div>'
+        + '<p style="margin:0 0 14px; font-size:14px; color:#475569; line-height:1.5;">' + esc(subtitle) + '</p>'
+        + '<div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:6px 12px; margin-bottom:18px;">'
+        + rowsHtml
+        + '</div>'
+        + '<div style="display:flex; justify-content:flex-end;">'
+        + '<button type="button" id="close-inquiry-popup-btn" class="btn btn-primary btn-sm">' + esc(closeBtnText) + '</button>'
+        + '</div>'
+        + '</div>';
 
     const cleanup = () => {
         document.removeEventListener("keydown", onEsc);
@@ -436,7 +439,6 @@ const openInquirySummaryPopup = (fields) => {
     if (xBtn) xBtn.addEventListener("click", cleanup);
     if (okBtn) okBtn.addEventListener("click", cleanup);
 };
-
 // Contact Page: Query Parameter Pre-selection, Strict Validation & Web3Forms + Persistent Fallbacks
 const quoteForm = document.getElementById("quote-form");
 if (quoteForm) {
