@@ -128,7 +128,7 @@ const AM_TRANSLATIONS = {
         heroTag: "ያግኙን • ፈጣን የዋጋ መጠየቂያ",
         heroTitle: "ስለ ፕሮጀክትዎ ይንገሩን — ግልጽ የዋጋ ግምት ይቀበሉ",
         heroSub: "የሚፈልጉትን አገልግሎት ከታች ይምረጡ ወይም በአማርኛም ሆነ በእንግሊዝኛ ፍላጎትዎን በአጭሩ ይጻፉ። በፍጥነት ምላሽ እንሰጣለን።",
-        formHeading: "የፕሮጀክት መጠየቂያ ቅጽ (Request a Quote)",
+        formHeading: "የዋጋ ግምት መጠየቂያ ቅጽ",
         formSub: "ኮከብ (*) ያለባቸውን 3 መሰረታዊ መረጃዎች (ስም፣ ኢሜይል እና የፕሮጀክት ዝርዝር) መሙላት ግዴታ ነው።",
         noticeHtml: "ይህን ቅጽ ሲልኩ መልዕክትዎ በቀጥታ ወደ <strong>Solomon@hailu.online</strong> ይደርሳል። በተጨማሪም በኢሜይል አፕ፣ በGmail ወይም ጽሑፉን ኮፒ በማድረግ መላክ የሚችሉባቸው አማራጮች ከታች ይቀርባሉ።",
         labels: {
@@ -323,6 +323,120 @@ if (navLinks && !document.getElementById("lang-toggle-btn")) {
 }
 applyLanguage(currentLang);
 
+const copyTextReliable = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch (_) {}
+    }
+    try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-9999px";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return Boolean(ok);
+    } catch (_) {
+        return false;
+    }
+};
+
+document.querySelectorAll("[data-copy-email]").forEach((btn) => {
+    if (!btn.dataset.enLabel) btn.dataset.enLabel = btn.textContent.trim();
+    btn.addEventListener("click", async () => {
+        const emailText = "Solomon@hailu.online";
+        const copied = await copyTextReliable(emailText);
+        if (copied) {
+            btn.textContent = currentLang === "am" ? "ኢሜይል ኮፒ ተደርጓል ✓" : "Email Copied ✓";
+            setTimeout(() => {
+                btn.textContent = currentLang === "am" ? "ኢሜይል ኮፒ ያድርጉ" : btn.dataset.enLabel;
+            }, 2200);
+        } else {
+            btn.textContent = currentLang === "am" ? "በእጅ ኮፒ ያድርጉ" : "Copy Manually";
+        }
+    });
+});
+
+const openInquirySummaryPopup = (fields) => {
+    const existing = document.getElementById("inquiry-confirmation-popup");
+    if (existing) existing.remove();
+
+    const isAm = currentLang === "am";
+    const esc = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+    const title = isAm ? "ጥያቄዎ በተሳካ ሁኔታ ተልኳል" : "Inquiry Sent Successfully";
+    const subtitle = isAm
+        ? "የሞሉት መረጃ ወደ Solomon@hailu.online ደርሷል። የጥያቄዎ ማጠቃለያ ከዚህ በታች ቀርቧል፡"
+        : "Your inquiry has been submitted to Solomon@hailu.online. Here is a summary of the details you entered:";
+
+    const rows = [
+        [isAm ? "ሙሉ ስም / ድርጅት" : "Name / Organization", fields.name],
+        [isAm ? "ኢሜይል" : "Email Address", fields.email],
+        [isAm ? "የተመረጠ አገልግሎት" : "Service Requested", fields.serviceText],
+        [isAm ? "የተመረጠ ፓኬጅ" : "Package Preference", fields.packageText],
+        [isAm ? "የተገመተ በጀት" : "Estimated Budget", fields.budget],
+        [isAm ? "የሚፈለግበት ጊዜ" : "Preferred Deadline", fields.deadline],
+        [isAm ? "የፕሮጀክት ዝርዝር" : "Project Description", fields.details]
+    ];
+
+    const rowsHtml = rows.map(([k, v]) => 
+        <div style="padding:8px 0; border-bottom:1px solid #e5e7eb; display:grid; grid-template-columns:145px 1fr; gap:8px; font-size:13.5px;">
+            <strong style="color:#1e293b;">:</strong>
+            <span style="color:#334155; white-space:pre-wrap; word-break:break-word;"></span>
+        </div>
+    ).join("");
+
+    const closeBtnText = isAm ? "ዝጋ" : "Close";
+
+    const overlay = document.createElement("div");
+    overlay.id = "inquiry-confirmation-popup";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.style.cssText = "position:fixed; inset:0; background:rgba(15,23,42,0.62); display:flex; align-items:center; justify-content:center; padding:16px; z-index:9999;";
+
+    overlay.innerHTML = 
+        <div style="background:#ffffff; color:#0f172a; max-width:560px; width:100%; border-radius:12px; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.28); max-height:88vh; overflow-y:auto; position:relative;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px;">
+                <h3 style="margin:0; font-size:19px; color:#0f172a;"></h3>
+                <button type="button" id="close-inquiry-popup-x" aria-label="" style="background:transparent; border:none; font-size:22px; line-height:1; cursor:pointer; color:#475569; padding:0 4px;">&times;</button>
+            </div>
+            <p style="margin:0 0 14px; font-size:14px; color:#475569; line-height:1.5;"></p>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:6px 12px; margin-bottom:18px;">
+                
+            </div>
+            <div style="display:flex; justify-content:flex-end;">
+                <button type="button" id="close-inquiry-popup-btn" class="btn btn-primary btn-sm"></button>
+            </div>
+        </div>
+    ;
+
+    const cleanup = () => {
+        document.removeEventListener("keydown", onEsc);
+        overlay.remove();
+    };
+    const onEsc = (ev) => {
+        if (ev.key === "Escape") cleanup();
+    };
+
+    overlay.addEventListener("click", (ev) => {
+        if (ev.target === overlay) cleanup();
+    });
+    document.addEventListener("keydown", onEsc);
+    document.body.appendChild(overlay);
+
+    const xBtn = document.getElementById("close-inquiry-popup-x");
+    const okBtn = document.getElementById("close-inquiry-popup-btn");
+    if (xBtn) xBtn.addEventListener("click", cleanup);
+    if (okBtn) okBtn.addEventListener("click", cleanup);
+};
+
 // Contact Page: Query Parameter Pre-selection, Strict Validation & Web3Forms + Persistent Fallbacks
 const quoteForm = document.getElementById("quote-form");
 if (quoteForm) {
@@ -492,6 +606,15 @@ if (quoteForm) {
                     ? `<strong>ጥያቄዎ በተሳካ ሁኔታ ተልኳል!</strong> መልዕክትዎ ወደ <strong>Solomon@hailu.online</strong> ደርሷል። እናመሰግናለን <strong>${escapeHtml(name)}</strong>&mdash;በአጭር ጊዜ ውስጥ ምላሽ እንሰጥዎታለን።<span style="display:block; margin-top:8px; font-size:13px;">ተጨማሪ የመላኪያ/ቅጂ አማራጮች (Backup Options)፦</span>`
                     : `<strong>Inquiry Sent!</strong> Your message has been delivered to <strong>Solomon@hailu.online</strong>. Thank you, <strong>${escapeHtml(name)}</strong>&mdash;I will review your details and follow up shortly.<span style="display:block; margin-top:8px; font-size:13px;">Backup options (if you also want a local copy or wish to follow up directly):</span>`)
                     + renderFallbackButtons(subject, body);
+                openInquirySummaryPopup({
+                    name,
+                    email,
+                    serviceText: serviceSelect.options[serviceSelect.selectedIndex].text,
+                    packageText: packageSelect.options[packageSelect.selectedIndex].text,
+                    budget,
+                    deadline,
+                    details
+                });
                 bindCopyFallback(subject, body);
                 quoteForm.reset();
             } else {
