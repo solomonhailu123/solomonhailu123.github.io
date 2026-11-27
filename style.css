@@ -1868,3 +1868,59 @@ a {
         text-align: center;
     }
 }
+/* Bilingual EN / Amharic Language Toggle */
+.lang-switch-item {
+    display: flex;
+    align-items: center;
+}
+
+.lang-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 11px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--light-blue);
+    color: var(--navy);
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.lang-toggle-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.lang-toggle-btn span.active-lang {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .lang-toggle-btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 42px;
+        margin-top: 4px;
+    }
+}
+/* Modal Backdrop & Clean Open/Close Visibility */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-backdrop.open {
+    display: flex;
+}
