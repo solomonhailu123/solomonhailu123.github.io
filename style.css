@@ -1924,3 +1924,126 @@ a {
 .modal-backdrop.open {
     display: flex;
 }
+@media (max-width: 768px) {
+    /* STAGE 3 REFINEMENT: TABLET & MOBILE READABILITY (DESKTOP UNCHANGED) */
+    .pricing-tiers-grid,
+    .service-detail-grid,
+    .portfolio-grid,
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .pricing-card,
+    .service-detail-card,
+    .project-card,
+    .service-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .pricing-card .btn,
+    .service-detail-card .btn {
+        margin-top: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Single-column cards below 600px prevent cramped pricing, feature lists, and preview tables */
+    .pricing-tiers-grid,
+    .service-detail-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .pricing-card,
+    .service-detail-card {
+        padding: 20px 18px;
+    }
+
+    .pricing-card .tier-price-usd {
+        font-size: 28px;
+    }
+
+    .pricing-card .tier-price-etb {
+        font-size: 13px;
+    }
+
+    .pricing-card .tier-features,
+    .pricing-card .tier-meta {
+        font-size: 13.5px;
+    }
+
+    .pricing-card .btn,
+    .service-detail-card .btn {
+        width: 100%;
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    .project-info {
+        padding: 20px 18px;
+    }
+
+    .project-info h3 {
+        font-size: 18.5px;
+    }
+
+    .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .project-actions .btn {
+        min-height: 44px;
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+
+    .modal-dialog {
+        width: 96%;
+        max-height: 90vh;
+        padding: 18px 16px;
+    }
+
+    .modal-close {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 430px) {
+    /* 1-column service cards on phones <= 430px (430, 414, 390, 375, 360) for comfortable Amharic & English text */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .service-card {
+        padding: 18px 16px;
+    }
+
+    .service-card h3 {
+        font-size: 16px;
+    }
+
+    .service-card p {
+        font-size: 13.5px;
+    }
+}
+
+
+/* Desktop typography refinement — November 2026 */
+@media (min-width: 769px) {
+
+    .service-card p,
+    .service-detail-desc,
+    .project-info > p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+}

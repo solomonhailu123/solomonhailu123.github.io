@@ -31,26 +31,94 @@ if (navToggle && navLinks) {
     });
 }
 
-// Portfolio Case-Study Modal Controls (Single Active Modal + Guaranteed Close)
-const closeAllModals = () => {
+// Portfolio Case-Study Modal Controls (Accessible Focus Trap + Single Active Modal + Guaranteed Close)
+let lastModalTrigger = null;
+let activeFocusTrapCleanup = null;
+
+const getFocusableElements = (container) => {
+    if (!container) return [];
+    const selector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    return Array.from(container.querySelectorAll(selector)).filter(
+        (el) => el.offsetParent !== null || getComputedStyle(el).position === "fixed"
+    );
+};
+
+const attachFocusTrap = (modalContainer, onEscapeClose) => {
+    if (typeof activeFocusTrapCleanup === "function") {
+        activeFocusTrapCleanup();
+    }
+    const handleKeydown = (e) => {
+        if (e.key === "Escape") {
+            e.preventDefault();
+            onEscapeClose();
+            return;
+        }
+        if (e.key !== "Tab") return;
+        const focusables = getFocusableElements(modalContainer);
+        if (focusables.length === 0) {
+            e.preventDefault();
+            return;
+        }
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey) {
+            if (document.activeElement === first || !modalContainer.contains(document.activeElement)) {
+                e.preventDefault();
+                last.focus();
+            }
+        } else {
+            if (document.activeElement === last || !modalContainer.contains(document.activeElement)) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    };
+    document.addEventListener("keydown", handleKeydown);
+    activeFocusTrapCleanup = () => {
+        document.removeEventListener("keydown", handleKeydown);
+        activeFocusTrapCleanup = null;
+    };
+};
+
+const closeAllModals = (restoreFocus = true) => {
+    if (typeof activeFocusTrapCleanup === "function") {
+        activeFocusTrapCleanup();
+    }
     document.querySelectorAll(".modal, .modal-backdrop").forEach((m) => {
         m.classList.remove("open");
         m.setAttribute("aria-hidden", "true");
     });
     document.body.style.overflow = "";
+    if (restoreFocus && lastModalTrigger && typeof lastModalTrigger.focus === "function") {
+        const toFocus = lastModalTrigger;
+        lastModalTrigger = null;
+        toFocus.focus();
+    }
 };
 
 document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-modal]");
     if (trigger) {
         e.preventDefault();
+        lastModalTrigger = trigger;
         const modalId = trigger.getAttribute("data-modal");
         const targetModal = document.getElementById(modalId);
-        closeAllModals();
+        closeAllModals(false);
         if (targetModal) {
             targetModal.classList.add("open");
             targetModal.setAttribute("aria-hidden", "false");
+            const dialogEl = targetModal.querySelector(".modal-dialog") || targetModal;
+            dialogEl.setAttribute("role", "dialog");
+            dialogEl.setAttribute("aria-modal", "true");
             document.body.style.overflow = "hidden";
+            attachFocusTrap(dialogEl, () => closeAllModals(true));
+            const closeBtn = dialogEl.querySelector("[data-close], .modal-close");
+            const focusables = getFocusableElements(dialogEl);
+            if (closeBtn) {
+                closeBtn.focus();
+            } else if (focusables.length > 0) {
+                focusables[0].focus();
+            }
         }
         return;
     }
@@ -58,22 +126,15 @@ document.addEventListener("click", (e) => {
     const closeBtn = e.target.closest("[data-close], .modal-close");
     if (closeBtn) {
         e.preventDefault();
-        closeAllModals();
+        closeAllModals(true);
         return;
     }
 
     const openBackdrop = document.querySelector(".modal-backdrop.open, .modal.open");
     if (openBackdrop && e.target === openBackdrop) {
-        closeAllModals();
+        closeAllModals(true);
     }
 });
-
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        closeAllModals();
-    }
-});
-// Bilingual Support (English / Amharic)
 const LANG_STORAGE_KEY = "hailu_site_lang";
 let currentLang = localStorage.getItem(LANG_STORAGE_KEY) === "am" ? "am" : "en";
 
@@ -286,6 +347,10 @@ const applyLanguage = (lang) => {
             : pdfLink.dataset.enPdfText;
     });
 
+        document.querySelectorAll("[data-copy-email]").forEach((btn) => {
+        if (!btn.dataset.enLabel) btn.dataset.enLabel = btn.textContent.trim();
+        btn.textContent = currentLang === "am" ? "ኢሜይል ኮፒ ያድርጉ" : btn.dataset.enLabel;
+    });
     // Apply full dictionary to text elements across all pages
     if (window.AM_FULL_DICTIONARY) {
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -359,7 +424,10 @@ document.querySelectorAll("[data-copy-email]").forEach((btn) => {
                 btn.textContent = currentLang === "am" ? "ኢሜይል ኮፒ ያድርጉ" : btn.dataset.enLabel;
             }, 2200);
         } else {
-            btn.textContent = currentLang === "am" ? "በእጅ ኮፒ ያድርጉ" : "Copy Manually";
+            btn.textContent = currentLang === "am" ? "ኮፒ አልተሳካም — በእጅ ኮፒ ያድርጉ" : "Copy Failed — Copy Manually";
+            setTimeout(() => {
+                btn.textContent = currentLang === "am" ? "ኢሜይል ኮፒ ያድርጉ" : btn.dataset.enLabel;
+            }, 3000);
         }
     });
 });
@@ -368,6 +436,7 @@ const openInquirySummaryPopup = (fields) => {
     const existing = document.getElementById("inquiry-confirmation-popup");
     if (existing) existing.remove();
 
+    const triggerBeforePopup = document.activeElement;
     const isAm = currentLang === "am";
     const esc = (v) => String(v || "")
         .replace(/&/g, "&amp;")
@@ -401,15 +470,13 @@ const openInquirySummaryPopup = (fields) => {
 
     const overlay = document.createElement("div");
     overlay.id = "inquiry-confirmation-popup";
-    overlay.setAttribute("role", "dialog");
-    overlay.setAttribute("aria-modal", "true");
     overlay.style.cssText = "position:fixed; inset:0; background:rgba(15,23,42,0.62); display:flex; align-items:center; justify-content:center; padding:16px; z-index:9999;";
 
     overlay.innerHTML =
-        '<div style="background:#ffffff; color:#0f172a; max-width:560px; width:100%; border-radius:12px; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.28); max-height:88vh; overflow-y:auto; position:relative;">'
+        '<div id="inquiry-popup-dialog" role="dialog" aria-modal="true" aria-labelledby="inquiry-popup-title" style="background:#ffffff; color:#0f172a; max-width:560px; width:100%; border-radius:12px; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.28); max-height:88vh; overflow-y:auto; position:relative;">'
         + '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px;">'
-        + '<h3 style="margin:0; font-size:19px; color:#0f172a;">' + esc(title) + '</h3>'
-        + '<button type="button" id="close-inquiry-popup-x" aria-label="' + esc(closeBtnText) + '" style="background:transparent; border:none; font-size:22px; line-height:1; cursor:pointer; color:#475569; padding:0 4px;">&times;</button>'
+        + '<h3 id="inquiry-popup-title" style="margin:0; font-size:19px; color:#0f172a;">' + esc(title) + '</h3>'
+        + '<button type="button" id="close-inquiry-popup-x" aria-label="' + esc(closeBtnText) + '" style="background:transparent; border:none; font-size:22px; line-height:1; cursor:pointer; color:#475569; min-width:36px; min-height:36px;">&times;</button>'
         + '</div>'
         + '<p style="margin:0 0 14px; font-size:14px; color:#475569; line-height:1.5;">' + esc(subtitle) + '</p>'
         + '<div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:6px 12px; margin-bottom:18px;">'
@@ -420,23 +487,33 @@ const openInquirySummaryPopup = (fields) => {
         + '</div>'
         + '</div>';
 
+    document.body.style.overflow = "hidden";
+    document.body.appendChild(overlay);
+
+    const dialogEl = document.getElementById("inquiry-popup-dialog");
     const cleanup = () => {
-        document.removeEventListener("keydown", onEsc);
+        if (typeof activeFocusTrapCleanup === "function") {
+            activeFocusTrapCleanup();
+        }
+        document.body.style.overflow = "";
         overlay.remove();
+        if (triggerBeforePopup && typeof triggerBeforePopup.focus === "function") {
+            triggerBeforePopup.focus();
+        }
     };
-    const onEsc = (ev) => {
-        if (ev.key === "Escape") cleanup();
-    };
+
+    attachFocusTrap(dialogEl, cleanup);
 
     overlay.addEventListener("click", (ev) => {
         if (ev.target === overlay) cleanup();
     });
-    document.addEventListener("keydown", onEsc);
-    document.body.appendChild(overlay);
 
     const xBtn = document.getElementById("close-inquiry-popup-x");
     const okBtn = document.getElementById("close-inquiry-popup-btn");
-    if (xBtn) xBtn.addEventListener("click", cleanup);
+    if (xBtn) {
+        xBtn.addEventListener("click", cleanup);
+        xBtn.focus();
+    }
     if (okBtn) okBtn.addEventListener("click", cleanup);
 };
 // Contact Page: Query Parameter Pre-selection, Strict Validation & Web3Forms + Persistent Fallbacks
@@ -515,11 +592,15 @@ if (quoteForm) {
 
     const bindCopyFallback = (subject, body) => {
         const copyInquiryBtn = document.getElementById("copy-inquiry-btn");
-        if (copyInquiryBtn && navigator.clipboard) {
-            copyInquiryBtn.addEventListener("click", () => {
-                navigator.clipboard.writeText(`To: Solomon@hailu.online\nSubject: ${subject}\n\n${body}`).then(() => {
+        if (copyInquiryBtn) {
+            copyInquiryBtn.addEventListener("click", async () => {
+                const payloadText = `To: Solomon@hailu.online\nSubject: ${subject}\n\n${body}`;
+                const copied = await copyTextReliable(payloadText);
+                if (copied) {
                     copyInquiryBtn.textContent = currentLang === "am" ? "ኮፒ ተደርጓል ✓" : "Inquiry Copied ✓";
-                });
+                } else {
+                    copyInquiryBtn.textContent = currentLang === "am" ? "ኮፒ አልተሳካም — በእጅ ኮፒ ያድርጉ" : "Copy Failed — Copy Manually";
+                }
             });
         }
     };
